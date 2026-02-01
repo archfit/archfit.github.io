@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function initApp() {
+    initDynamicDate();
     initAnimatedCounters();
     initDemoTabs();
     initReadinessDemo();
@@ -15,6 +16,19 @@ function initApp() {
     initRecoveryDemo();
     initScrollAnimations();
     initNavigation();
+}
+
+/* ========================================
+   Dynamic Date
+   ======================================== */
+
+function initDynamicDate() {
+    const dateElement = document.getElementById('currentDate');
+    if (dateElement) {
+        const today = new Date();
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        dateElement.textContent = today.toLocaleDateString('en-US', options);
+    }
 }
 
 /* ========================================
