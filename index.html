@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArchFit — Personalized Recovery & Training Optimization</title>
+    <meta name="description" content="ArchFit is a revolutionary AI-powered recovery and training optimization platform that analyzes physiological signals to help athletes and fitness enthusiasts optimize their training timing and recovery.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+            </div>
+            <span class="brand-name">ArchFit</span>
+        </div>
+        <div class="nav-links">
+            <a href="#vision" class="nav-link active">Vision</a>
+            <a href="#technology" class="nav-link">Technology</a>
+            <a href="#features" class="nav-link">Features</a>
+            <a href="#demo" class="nav-link">Demo</a>
+            <a href="#architecture" class="nav-link">Architecture</a>
+        </div>
+        <div class="nav-actions">
+            <a href="https://github.com" class="btn-github" target="_blank">
+                <i class="fab fa-github"></i>
+                <span>View on GitHub</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-background">
+            <div class="gradient-orb orb-1"></div>
+            <div class="gradient-orb orb-2"></div>
+            <div class="gradient-orb orb-3"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                <span>In Early Development</span>
+            </div>
+            <h1 class="hero-title">
+                Train Smarter.<br>
+                <span class="gradient-text">Recover Faster.</span>
+            </h1>
+            <p class="hero-subtitle">
+                ArchFit is pioneering the future of personalized athletic recovery. 
+                Using advanced machine learning and Apple Watch sensor data, we predict 
+                your optimal training windows with unprecedented accuracy.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="85">0</span>
+                    <span class="stat-suffix">%</span>
+                    <span class="stat-label">Prediction Accuracy</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="50">0</span>
+                    <span class="stat-suffix">+</span>
+                    <span class="stat-label">ML Models</span>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="14">0</span>
+                    <span class="stat-suffix">d</span>
+                    <span class="stat-label">Forecast Horizon</span>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <a href="#demo" class="btn-primary">
+                    <span>See It In Action</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#technology" class="btn-secondary">
+                    <span>How It Works</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="phone-mockup">
+                <div class="phone-screen">
+                    <div class="app-header">
+                        <span class="app-title">Today's Readiness</span>
+                        <span class="app-date">February 2, 2026</span>
+                    </div>
+                    <div class="app-score-ring">
+                        <svg viewBox="0 0 100 100">
+                            <circle class="app-score-bg" cx="50" cy="50" r="45"/>
+                            <circle class="app-score-progress" cx="50" cy="50" r="45"/>
+                        </svg>
+                        <div class="app-score-value">
+                            <span class="score">78</span>
+                            <span class="label">Readiness</span>
+                        </div>
+                    </div>
+                    <div class="app-status">
+                        <span class="status-badge normal">
+                            <i class="fas fa-battery-three-quarters"></i>
+                            Normal
+                        </span>
+                    </div>
+                    <div class="app-metrics">
+                        <div class="app-metric">
+                            <i class="fas fa-wave-square"></i>
+                            <span>42ms HRV</span>
+                        </div>
+                        <div class="app-metric">
+                            <i class="fas fa-moon"></i>
+                            <span>7h 42m</span>
+                        </div>
+                        <div class="app-metric">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>320 AU</span>
+                        </div>
+                    </div>
+</div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- Vision Section -->
+    <section class="vision-section" id="vision">
+        <div class="section-container">
+            <div class="section-header centered">
+                <span class="section-tag">Our Vision</span>
+                <h2>The Future of Athletic Recovery</h2>
+                <p class="section-subtitle">
+                    We're building the most advanced personalized recovery intelligence platform ever created.
+                    One that understands your body better than you do.
+                </p>
+            </div>
+            <div class="vision-grid">
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Insights</h3>
+                    <p>
+                        Our proprietary machine learning models analyze hundreds of physiological signals 
+                        to predict your recovery status with clinical-grade accuracy.
+                    </p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Seamless Integration</h3>
+                    <p>
+                        Built from the ground up for Apple Watch and iPhone, ArchFit leverages 
+                        native APIs for optimal battery efficiency and data accuracy.
+                    </p>
+                </div>
+                <div class="vision-card">
+                    <div class="vision-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Privacy First</h3>
+                    <p>
+                        Your health data never leaves your device. All ML inference happens locally, 
+                        ensuring complete privacy with zero compromises on capability.
+                    </p>
+                </div>
+            </div>
+            <div class="quote-section">
+                <blockquote>
+                    "What if you could see into the future of your training? Know exactly when to push 
+                    and when to recover? That's the promise of ArchFit."
+                </blockquote>
+                <cite>— The ArchFit Team</cite>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="technology-section" id="technology">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Technology</span>
+                <h2>Built on Cutting-Edge Science</h2>
+                <p class="section-subtitle">
+                    Every component of ArchFit is engineered for performance, accuracy, and reliability.
+                </p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Core ML</h3>
+                    </div>
+                    <div class="tech-content">
+                        <p>
+                            XGBoost gradient boosted trees for readiness scoring, combined with 
+                            Hidden Markov Models for fatigue state classification.
+                        </p>
+                        <div class="tech-tags">
+                            <span>Swift</span>
+                            <span>Core ML</span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>HealthKit</h3>
+                    </div>
+                    <div class="tech-content">
+                        <p>
+                            Direct integration with Apple Health for heart rate, HRV, sleep analysis, 
+                            and workout data with enterprise-grade reliability.
+                        </p>
+                        <div class="tech-tags">
+                            <span>HealthKit</span>
+                            <span>WatchConnectivity</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Encryption</h3>
+                    </div>
+                    <div class="tech-content">
+                        <p>
+                            Military-grade SQLite encryption ensures your sensitive health data 
+                            remains secure, even if your device is compromised.
+                        </p>
+                        <div class="tech-tags">
+                            <span>SQLCipher</span>
+                            <span>iOS Keychain</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="tech-card">
+                    <div class="tech-header">
+                        <div class="tech-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Sync Engine</h3>
+                    </div>
+                    <div class="tech-content">
+                        <p>
+                            Real-time synchronization between iPhone and Apple Watch using 
+                            native WatchConnectivity framework for minimal latency.
+                        </p>
+                        <div class="tech-tags">
+                            <span>WatchConnectivity</span>
+                            <span>Combine</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+        <div class="section-container">
+            <div class="section-header centered">
+                <span class="section-tag">Features</span>
+                <h2>Everything You Need to Optimize Your Training</h2>
+                <p class="section-subtitle">
+                    From daily readiness scores to long-term trend analysis, ArchFit provides 
+                    the insights you need to reach your peak potential.
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card primary">
+                    <div class="feature-icon">
+                        <i class="fas fa-gauge-high"></i>
+                    </div>
+                    <h3>Daily Readiness Score</h3>
+                    <p>
+                        Get an at-a-glance 0-100 readiness score every morning, powered by 
+                        analysis of your overnight recovery metrics.
+                    </p>
+                    <ul class="feature-list">
+                        <li>Real-time calculation</li>
+                        <li>Personalized baseline comparison</li>
+                        <li>Confidence indicators</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-battery-quarter"></i>
+                    </div>
+                    <h3>Fatigue State Detection</h3>
+                    <p>
+                        Four-state fatigue classification: Recovered, Normal, Fatigued, 
+                        and Overreached. Know exactly where you stand.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Recovery Time Prediction</h3>
+                    <p>
+                        ML-powered estimates of hours until full recovery, helping you 
+                        plan training intensity with precision.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Training Load Analytics</h3>
+                    <p>
+                        ACWR (Acute:Chronic Workload Ratio) tracking with historical 
+                        trends and predictive insights.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-moon"></i>
+                    </div>
+                    <h3>Sleep Analysis</h3>
+                    <p>
+                        Deep sleep metrics, sleep efficiency scores, and recovery 
+                        correlation analysis.
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI Recommendations</h3>
+                    <p>
+                        Actionable, personalized suggestions based on your unique 
+                        physiological patterns and goals.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Section -->
+    <section class="demo-section" id="demo">
+        <div class="section-container">
+            <div class="section-header centered">
+                <span class="section-tag">Interactive Demo</span>
+                <h2>Experience ArchFit</h2>
+                <p class="section-subtitle">
+                    See how ArchFit analyzes your data to generate personalized insights.
+                </p>
+            </div>
+            <div class="demo-container">
+                <div class="demo-tabs">
+                    <button class="demo-tab active" data-demo="readiness">
+                        <i class="fas fa-gauge-high"></i>
+                        Readiness Calculator
+                    </button>
+                    <button class="demo-tab" data-demo="acwr">
+                        <i class="fas fa-sliders-h"></i>
+                        ACWR Simulator
+                    </button>
+                    <button class="demo-tab" data-demo="recovery">
+                        <i class="fas fa-clock"></i>
+                        Recovery Predictor
+                    </button>
+                </div>
+                <div class="demo-content">
+                    <!-- Readiness Demo -->
+                    <div class="demo-panel active" id="readiness-demo">
+                        <div class="demo-description">
+                            <h3>Readiness Score Calculator</h3>
+                            <p>
+                                Adjust the parameters below to see how different physiological 
+                                factors affect your predicted readiness score.
+                            </p>
+                        </div>
+                        <div class="demo-interactive">
+                            <div class="slider-group">
+                                <label>
+                                    <span>Sleep Duration</span>
+                                    <span class="slider-value" id="sleepValue">7.5h</span>
+                                </label>
+                                <input type="range" id="sleepSlider" min="4" max="10" step="0.5" value="7.5">
+                                <div class="slider-labels">
+                                    <span>4h</span>
+                                    <span>10h</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label>
+                                    <span>HRV (ms)</span>
+                                    <span class="slider-value" id="hrvValue">45</span>
+                                </label>
+                                <input type="range" id="hrvSlider" min="20" max="80" step="1" value="45">
+                                <div class="slider-labels">
+                                    <span>20</span>
+                                    <span>80ms</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label>
+                                    <span>Resting HR (bpm)</span>
+                                    <span class="slider-value" id="hrValue">55</span>
+                                </label>
+                                <input type="range" id="hrSlider" min="40" max="80" step="1" value="55">
+                                <div class="slider-labels">
+                                    <span>40</span>
+                                    <span>80</span>
+                                </div>
+                            </div>
+                            <div class="slider-group">
+                                <label>
+                                    <span>Training Load (AU)</span>
+                                    <span class="slider-value" id="loadValue">300</span>
+                                </label>
+                                <input type="range" id="loadSlider" min="0" max="600" step="10" value="300">
+                                <div class="slider-labels">
+                                    <span>0</span>
+                                    <span>600 AU</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="demo-result">
+                            <div class="result-ring">
+                                <svg viewBox="0 0 100 100">
+                                    <circle class="result-bg" cx="50" cy="50" r="45"/>
+                                    <circle class="result-progress" cx="50" cy="50" r="45" id="resultProgress"/>
+                                </svg>
+                                <div class="result-value">
+                                    <span class="score" id="demoScore">78</span>
+                                    <span class="label">Score</span>
+                                </div>
+                            </div>
+                            <div class="result-status">
+                                <span class="status-badge" id="demoStatus">Good</span>
+                            </div>
+                            <div class="result-factors">
+                                <h4>Contributing Factors</h4>
+                                <div class="factor-bars" id="factorBars">
+                                    <div class="factor-bar">
+                                        <span class="factor-label">Sleep Quality</span>
+                                        <div class="factor-track">
+                                            <div class="factor-fill" style="width: 75%"></div>
+                                        </div>
+                                        <span class="factor-value">75%</span>
+                                    </div>
+                                    <div class="factor-bar">
+                                        <span class="factor-label">HRV Recovery</span>
+                                        <div class="factor-track">
+                                            <div class="factor-fill" style="width: 82%"></div>
+                                        </div>
+                                        <span class="factor-value">82%</span>
+                                    </div>
+                                    <div class="factor-bar">
+                                        <span class="factor-label">Training Load</span>
+                                        <div class="factor-track">
+                                            <div class="factor-fill" style="width: 65%"></div>
+                                        </div>
+                                        <span class="factor-value">65%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ACWR Demo -->
+                    <div class="demo-panel" id="acwr-demo">
+                        <div class="demo-description">
+                            <h3>ACWR Simulator</h3>
+                            <p>
+                                Explore how acute and chronic training loads interact to create 
+                                your ACWR (Acute:Chronic Workload Ratio).
+                            </p>
+                        </div>
+                        <div class="acwr-visualizer">
+                            <div class="acwr-chart">
+                                <div class="chart-bars" id="acwrBars">
+                                    <div class="chart-bar acute">
+                                        <div class="bar-fill" style="height: 60%"></div>
+                                        <span class="bar-label">Acute</span>
+                                    </div>
+                                    <div class="chart-bar chronic">
+                                        <div class="bar-fill" style="height: 80%"></div>
+                                        <span class="bar-label">Chronic</span>
+                                    </div>
+                                </div>
+                                <div class="acwr-result">
+                                    <span class="acwr-number" id="acwrNumber">0.85</span>
+                                    <span class="acwr-label">ACWR Ratio</span>
+                                </div>
+                            </div>
+                            <div class="acwr-info">
+                                <div class="acwr-zone optimal">
+                                    <span class="zone-label">Optimal Zone</span>
+                                    <span class="zone-range">0.8 - 1.3</span>
+                                </div>
+                                <div class="acwr-zone warning">
+                                    <span class="zone-label">Caution</span>
+                                    <span class="zone-range">1.3 - 1.5</span>
+                                </div>
+                                <div class="acwr-zone danger">
+                                    <span class="zone-label">High Risk</span>
+                                    <span class="zone-range">&gt; 1.5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Recovery Demo -->
+                    <div class="demo-panel" id="recovery-demo">
+                        <div class="demo-description">
+                            <h3>Recovery Time Predictor</h3>
+                            <p>
+                                See how different workout intensities affect your estimated 
+                                recovery time.
+                            </p>
+                        </div>
+                        <div class="recovery-options">
+                            <button class="recovery-btn" data-intensity="light" data-time="6">
+                                <i class="fas fa-walking"></i>
+                                <span>Light</span>
+                                <span class="time">~6 hours</span>
+                            </button>
+                            <button class="recovery-btn active" data-intensity="moderate" data-time="12">
+                                <i class="fas fa-running"></i>
+                                <span>Moderate</span>
+                                <span class="time">~12 hours</span>
+                            </button>
+                            <button class="recovery-btn" data-intensity="hard" data-time="24">
+                                <i class="fas fa-fast-forward"></i>
+                                <span>Hard</span>
+                                <span class="time">~24 hours</span>
+                            </button>
+                            <button class="recovery-btn" data-intensity="extreme" data-time="48">
+                                <i class="fas fa-bolt"></i>
+                                <span>Extreme</span>
+                                <span class="time">~48 hours</span>
+                            </button>
+                        </div>
+                        <div class="recovery-timeline">
+                            <div class="timeline-progress" id="timelineProgress"></div>
+                            <div class="timeline-markers">
+                                <span class="marker">Now</span>
+                                <span class="marker" id="recoveryTimeMarker">12h</span>
+                                <span class="marker">24h</span>
+                                <span class="marker">48h</span>
+                            </div>
+                        </div>
+                        <div class="recovery-recommendation">
+                            <i class="fas fa-lightbulb"></i>
+                            <p id="recoveryRecommendation">
+                                Based on your current recovery status, a moderate workout is recommended. 
+                                Your body should be fully recovered in approximately 12 hours.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section class="architecture-section" id="architecture">
+        <div class="section-container">
+            <div class="section-header centered">
+                <span class="section-tag">Architecture</span>
+                <h2>System Design</h2>
+                <p class="section-subtitle">
+                    A careful balance of power and efficiency, designed for Apple's ecosystem.
+                </p>
+            </div>
+            <div class="architecture-diagram">
+                <div class="arch-layer cloud">
+                    <div class="arch-label">Cloud (Optional)</div>
+                    <div class="arch-components">
+                        <div class="arch-component">
+                            <i class="fas fa-cloud"></i>
+                            <span>Model Updates</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-connector">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="arch-layer iphone">
+                    <div class="arch-label">iPhone</div>
+                    <div class="arch-components">
+                        <div class="arch-component">
+                            <i class="fas fa-brain"></i>
+                            <span>Core ML Models</span>
+                        </div>
+                        <div class="arch-component">
+                            <i class="fas fa-database"></i>
+                            <span>Encrypted SQLite</span>
+                        </div>
+                        <div class="arch-component">
+                            <i class="fas fa-chart-pie"></i>
+                            <span>Readiness Engine</span>
+                        </div>
+                        <div class="arch-component">
+                            <i class="fas fa-store"></i>
+                            <span>StoreKit IAP</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-connector">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="arch-layer watch">
+                    <div class="arch-label">Apple Watch</div>
+                    <div class="arch-components">
+                        <div class="arch-component">
+                            <i class="fas fa-heartbeat"></i>
+                            <span>Sensor Manager</span>
+                        </div>
+                        <div class="arch-component">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>WatchConnectivity</span>
+                        </div>
+                        <div class="arch-component">
+                            <i class="fas fa-stopwatch"></i>
+                            <span>Complications</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="arch-connector">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <div class="arch-layer healthkit">
+                    <div class="arch-label">Data Sources</div>
+                    <div class="arch-components horizontal">
+                        <div class="arch-component">
+                            <i class="fas fa-heart"></i>
+                            <span>Heart Rate</span>
+                        </div>
+                        <div class="arch-component">
+                            <i class="fas fa-moon"></i>
+                            <span>Sleep</span>
+                        </div>
+                        <div class="arch-component">
+                            <i class="fas fa-dumbbell"></i>
+                            <span>Workouts</span>
+                        </div>
+                        <div class="arch-component">
+                            <i class="fas fa-wave-square"></i>
+                            <span>HRV</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="design-principles">
+                <div class="principle">
+                    <i class="fas fa-bolt"></i>
+                    <h4>Battery Efficient</h4>
+                    <p>Optimized for all-day battery life with background processing</p>
+                </div>
+                <div class="principle">
+                    <i class="fas fa-shield-alt"></i>
+                    <h4>Privacy First</h4>
+                    <p>All processing happens on-device, never in the cloud</p>
+                </div>
+                <div class="principle">
+                    <i class="fas fa-rocket"></i>
+                    <h4>App Store Compliant</h4>
+                    <p>Built following Apple's guidelines for health apps</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="section-container">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Training?</h2>
+                <p>
+                    ArchFit is currently in early development. Join us on GitHub to follow 
+                    the journey and contribute to the future of personalized recovery.
+                </p>
+                <div class="cta-actions">
+                    <a href="https://github.com" class="btn-primary large" target="_blank">
+                        <i class="fab fa-github"></i>
+                        <span>Star on GitHub</span>
+                    </a>
+                    <a href="mailto:hello@archfit.app" class="btn-secondary large">
+                        <i class="fas fa-envelope"></i>
+                        <span>Get in Touch</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <span class="brand-name">ArchFit</span>
+                    <p>The future of personalized recovery intelligence.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Project</h4>
+                        <a href="#vision">Vision</a>
+                        <a href="#technology">Technology</a>
+                        <a href="#features">Features</a>
+                        <a href="#demo">Demo</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <a href="#">Documentation</a>
+                        <a href="#">API Reference</a>
+                        <a href="#">ML Pipeline</a>
+                        <a href="#">Contributing</a>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Connect</h4>
+                        <a href="https://github.com" target="_blank">GitHub</a>
+                        <a href="#">Twitter</a>
+                        <a href="#">Discord</a>
+                        <a href="mailto:hello@archfit.app">Contact</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 ArchFit. Open source under MIT License.</p>
+                <p class="built-with">
+                    Built with Apple HealthKit, Core ML, and SwiftUI
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/chart.min.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
