@@ -13,6 +13,7 @@ function initApp() {
     initReadinessDemo();
     initLoadDemo();
     initRecoveryDemo();
+    initPrinciples();
     initScrollAnimations();
     initNavigation();
 }
@@ -255,12 +256,40 @@ function initRecoveryDemo() {
 }
 
 /* ========================================
+   Principles Interaction
+   ======================================== */
+
+function initPrinciples() {
+    const cards = document.querySelectorAll('.principle-card');
+    if (cards.length === 0) return;
+
+    cards.forEach(card => {
+        card.addEventListener('click', () => {
+            const nextActive = !card.classList.contains('is-active');
+            cards.forEach(c => {
+                c.classList.remove('is-active');
+                c.setAttribute('aria-expanded', 'false');
+                const extra = c.querySelector('.principle-extra');
+                if (extra) extra.setAttribute('aria-hidden', 'true');
+            });
+
+            if (nextActive) {
+                card.classList.add('is-active');
+                card.setAttribute('aria-expanded', 'true');
+                const extra = card.querySelector('.principle-extra');
+                if (extra) extra.setAttribute('aria-hidden', 'false');
+            }
+        });
+    });
+}
+
+/* ========================================
    Scroll Animations
    ======================================== */
 
 function initScrollAnimations() {
     const animatedElements = document.querySelectorAll(
-        '.vision-card, .tech-card, .feature-card, .principle, .arch-layer'
+        '.vision-card, .tech-card, .feature-card, .principle-card, .arch-layer'
     );
     
     animatedElements.forEach(el => {
