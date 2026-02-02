@@ -9,10 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initApp() {
     initDynamicDate();
-    initAnimatedCounters();
     initDemoTabs();
     initReadinessDemo();
-    initACWRDemo();
+    initLoadDemo();
     initRecoveryDemo();
     initScrollAnimations();
     initNavigation();
@@ -29,47 +28,6 @@ function initDynamicDate() {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         dateElement.textContent = today.toLocaleDateString('en-US', options);
     }
-}
-
-/* ========================================
-   Animated Counters
-   ======================================== */
-
-function initAnimatedCounters() {
-    const counters = document.querySelectorAll('.stat-number');
-    
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const counter = entry.target;
-                const target = parseInt(counter.dataset.target);
-                animateCounter(counter, target);
-                observer.unobserve(counter);
-            }
-        });
-    }, { threshold: 0.5 });
-    
-    counters.forEach(counter => observer.observe(counter));
-}
-
-function animateCounter(element, target) {
-    const duration = 2000;
-    const startTime = performance.now();
-    const startValue = 0;
-    
-    function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easeOut = 1 - Math.pow(1 - progress, 3);
-        const current = Math.round(startValue + (target - startValue) * easeOut);
-        element.textContent = current;
-        
-        if (progress < 1) {
-            requestAnimationFrame(update);
-        }
-    }
-    
-    requestAnimationFrame(update);
 }
 
 /* ========================================
@@ -95,8 +53,22 @@ function initDemoTabs() {
                     panel.classList.add('active');
                 }
             });
+
+            handleDemoPanelActivated(targetDemo);
         });
     });
+
+    // Ensure first panel gets any activation logic.
+    const activeTab = document.querySelector('.demo-tab.active');
+    if (activeTab) {
+        handleDemoPanelActivated(activeTab.dataset.demo);
+    }
+}
+
+function handleDemoPanelActivated(demoKey) {
+    if (demoKey === 'load') {
+        animateLoadChart();
+    }
 }
 
 /* ========================================
@@ -104,124 +76,128 @@ function initDemoTabs() {
    ======================================== */
 
 function initReadinessDemo() {
-    const sleepSlider = document.getElementById('sleepSlider');
-    const hrvSlider = document.getElementById('hrvSlider');
-    const hrSlider = document.getElementById('hrSlider');
-    const loadSlider = document.getElementById('loadSlider');
-    
-    const sleepValue = document.getElementById('sleepValue');
-    const hrvValueEl = document.getElementById('hrvValue');
-    const hrValueEl = document.getElementById('hrValue');
-    const loadValueEl = document.getElementById('loadValue');
-    
     const demoScore = document.getElementById('demoScore');
     const demoStatus = document.getElementById('demoStatus');
+    const readinessBullets = document.getElementById('readinessBullets');
     const resultProgress = document.getElementById('resultProgress');
-    
-    const factorBars = document.querySelectorAll('.factor-bar .factor-fill');
-    const factorValues = document.querySelectorAll('.factor-bar .factor-value');
-    
-    function calculateReadiness() {
-        const sleep = parseFloat(sleepSlider.value);
-        const hrv = parseInt(hrvSlider.value);
-        const hr = parseInt(hrSlider.value);
-        const load = parseInt(loadSlider.value);
-        
-        // Update display values
-        sleepValue.textContent = sleep + 'h';
-        hrvValueEl.textContent = hrv;
-        hrValueEl.textContent = hr;
-        loadValueEl.textContent = load;
-        
-        // Calculate readiness score (simplified algorithm)
-        const sleepScore = Math.min((sleep / 8) * 100, 100);
-        const hrvScore = Math.min((hrv / 50) * 100, 100);
-        const loadScore = Math.max(100 - (load / 6), 0);
-        const hrScore = Math.min((80 - hr) / 30 * 100, 100);
-        
-        const readiness = Math.round(
-            sleepScore * 0.35 + 
-            hrvScore * 0.30 + 
-            loadScore * 0.20 + 
-            hrScore * 0.15
-        );
-        
-        // Update score display
-        animateValue(demoScore, parseInt(demoScore.textContent), readiness, 300);
-        
-        // Update progress ring
-        const circumference = 2 * Math.PI * 45;
-        const offset = circumference - (readiness / 100) * circumference;
-        resultProgress.style.strokeDashoffset = offset;
-        
-        // Update color based on score
-        let color, status;
-        if (readiness >= 80) {
-            color = '#34C759';
-            status = 'Optimal';
-        } else if (readiness >= 60) {
-            color = '#007AFF';
-            status = 'Good';
-        } else if (readiness >= 40) {
-            color = '#FF9500';
-            status = 'Moderate';
-        } else {
-            color = '#FF3B30';
-            status = 'Low';
-        }
-        
-        resultProgress.style.stroke = color;
-        demoStatus.textContent = status;
-        demoStatus.style.background = color + '20';
-        demoStatus.style.color = color;
-        
-        // Update factor bars
-        factorBars[0].style.width = sleepScore + '%';
-        factorBars[1].style.width = hrvScore + '%';
-        factorBars[2].style.width = loadScore + '%';
-        
-        factorValues[0].textContent = Math.round(sleepScore) + '%';
-        factorValues[1].textContent = Math.round(hrvScore) + '%';
-        factorValues[2].textContent = Math.round(loadScore) + '%';
+    const choiceButtons = document.querySelectorAll('.choice-btn');
+
+    if (!demoScore || !demoStatus || !readinessBullets || !resultProgress || choiceButtons.length === 0) {
+        return;
     }
-    
-    // Add event listeners
-    [sleepSlider, hrvSlider, hrSlider, loadSlider].forEach(slider => {
-        slider.addEventListener('input', calculateReadiness);
-    });
-    
-    // Initialize
-    calculateReadiness();
-}
 
-/* ========================================
-   ACWR Demo
-   ======================================== */
+    const state = {
+        sleep: getActiveChoiceValue('sleep') || 'typical',
+        recovery: getActiveChoiceValue('recovery') || 'typical',
+        load: getActiveChoiceValue('load') || 'typical',
+        stress: getActiveChoiceValue('stress') || 'typical'
+    };
 
-function initACWRDemo() {
-    // ACWR demo is visual-only for this landing page
-    // Animated bars on tab switch
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && entry.target.classList.contains('active')) {
-                animateACWRChart();
+    function getPoints(value, positiveWhenHigh = true) {
+        if (value === 'typical') return 1;
+        if (value === 'high') return positiveWhenHigh ? 2 : 0;
+        if (value === 'low') return positiveWhenHigh ? 0 : 2;
+        return 1;
+    }
+
+    function getActiveChoiceValue(choiceKey) {
+        const btn = document.querySelector(`.choice-btn.active[data-choice="${choiceKey}"]`);
+        return btn ? btn.dataset.value : null;
+    }
+
+    function setActiveButton(clickedBtn) {
+        const group = clickedBtn.closest('.choice-buttons');
+        if (!group) return;
+        group.querySelectorAll('.choice-btn').forEach(b => b.classList.remove('active'));
+        clickedBtn.classList.add('active');
+    }
+
+    function computeReadiness() {
+        // Intentionally qualitative: no visible weights, no numeric internals.
+        const sleepPts = getPoints(state.sleep, true);
+        const recoveryPts = getPoints(state.recovery, true);
+        const loadPts = getPoints(state.load, false); // heavy load reduces readiness
+        const stressPts = getPoints(state.stress, false); // high stress reduces readiness
+
+        const total = sleepPts + recoveryPts + loadPts + stressPts; // 0..8
+
+        if (total >= 7) return { label: 'Great', status: 'Great', color: '#34C759', percent: 86 };
+        if (total >= 5) return { label: 'Good', status: 'Good', color: '#007AFF', percent: 72 };
+        if (total >= 3) return { label: 'Moderate', status: 'Moderate', color: '#FF9500', percent: 52 };
+        return { label: 'Low', status: 'Low', color: '#FF3B30', percent: 34 };
+    }
+
+    function render() {
+        const result = computeReadiness();
+
+        demoScore.textContent = result.label;
+        demoStatus.textContent = result.status;
+        demoStatus.style.background = result.color + '20';
+        demoStatus.style.color = result.color;
+        resultProgress.style.stroke = result.color;
+
+        const circumference = 2 * Math.PI * 45;
+        const offset = circumference - (result.percent / 100) * circumference;
+        resultProgress.style.strokeDashoffset = offset;
+
+        // Bullet guidance: keep it non-technical and high level.
+        const bullets = [];
+
+        if (result.status === 'Great') {
+            bullets.push('Strong day for normal training or a quality session.');
+            bullets.push('Stay consistent and keep the warm-up solid.');
+        } else if (result.status === 'Good') {
+            bullets.push('Good day for normal training.');
+            bullets.push('If you’re unsure, start easy and build.');
+        } else if (result.status === 'Moderate') {
+            bullets.push('Consider an easier session or shorter intensity.');
+            bullets.push('Prioritize sleep, hydration, and an extended warm-up.');
+        } else {
+            bullets.push('Keep it light today — recovery-focused work is best.');
+            bullets.push('Aim for a calm day: movement, mobility, early night.');
+        }
+
+        // Add one contextual nudge without exposing calculations.
+        if (state.sleep === 'low') bullets[0] = 'Short sleep: keep intensity conservative today.';
+        if (state.recovery === 'low') bullets[0] = 'Recovery signals look down: favor light training today.';
+        if (state.load === 'high') bullets[0] = 'Recent training is heavy: consider a lighter day.';
+        if (state.stress === 'high') bullets[0] = 'High stress: keep training simple and controlled.';
+
+        readinessBullets.innerHTML = bullets.slice(0, 2).map(t => `<li>${t}</li>`).join('');
+    }
+
+    choiceButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            setActiveButton(btn);
+            const choiceKey = btn.dataset.choice;
+            const value = btn.dataset.value;
+            if (choiceKey && value) {
+                state[choiceKey] = value;
+                render();
             }
         });
     });
-    
-    const acwrPanel = document.getElementById('acwr-demo');
-    if (acwrPanel) {
-        observer.observe(acwrPanel);
-    }
+
+    render();
 }
 
-function animateACWRChart() {
-    const acuteBar = document.querySelector('.chart-bar.acute .bar-fill');
-    const chronicBar = document.querySelector('.chart-bar.chronic .bar-fill');
+/* ========================================
+   Load Demo
+   ======================================== */
+
+function initLoadDemo() {
+    // Load demo is visual-only for this landing page.
+    // Bars animate when the tab is activated.
+}
+
+function animateLoadChart() {
+    const recentBar = document.querySelector('.chart-bar.acute .bar-fill');
+    const baselineBar = document.querySelector('.chart-bar.chronic .bar-fill');
     
-    if (acuteBar && chronicBar) {
-        acuteBar.style.height = '60%';
-        chronicBar.style.height = '80%';
+    if (recentBar && baselineBar) {
+        // Keep values arbitrary (visual only).
+        recentBar.style.height = '62%';
+        baselineBar.style.height = '78%';
     }
 }
 
@@ -231,7 +207,7 @@ function animateACWRChart() {
 
 function initRecoveryDemo() {
     const recoveryButtons = document.querySelectorAll('.recovery-btn');
-    const timelineProgress = document.getElementById('timelineProgress');
+    const timelineFill = document.getElementById('timelineFill');
     const recoveryTimeMarker = document.getElementById('recoveryTimeMarker');
     const recoveryRecommendation = document.getElementById('recoveryRecommendation');
     
@@ -241,23 +217,39 @@ function initRecoveryDemo() {
         hard: 'Hard training is an option, but ensure proper warm-up. Monitor your recovery metrics closely.',
         extreme: 'Extreme caution advised. Your body needs more recovery time. Consider active recovery only.'
     };
+
+    const timingLabel = {
+        soon: 'Soon',
+        later: 'Later',
+        tomorrow: 'Tomorrow',
+        multi: 'Later'
+    };
+
+    const timingPercent = {
+        soon: 35,
+        later: 55,
+        tomorrow: 75,
+        multi: 92
+    };
     
     recoveryButtons.forEach(btn => {
         btn.addEventListener('click', function() {
             const intensity = this.dataset.intensity;
-            const time = parseInt(this.dataset.time);
+            const timeKey = this.dataset.time;
             
             // Update active state
             recoveryButtons.forEach(b => b.classList.remove('active'));
             this.classList.add('active');
             
             // Update timeline
-            const progress = (time / 48) * 100;
-            timelineProgress.style.width = progress + '%';
-            recoveryTimeMarker.textContent = time + 'h';
+            const progress = timingPercent[timeKey] ?? 55;
+            if (timelineFill) timelineFill.style.width = progress + '%';
+            if (recoveryTimeMarker) recoveryTimeMarker.textContent = timingLabel[timeKey] ?? 'Later';
             
             // Update recommendation
-            recoveryRecommendation.textContent = recommendations[intensity];
+            if (recoveryRecommendation && intensity && recommendations[intensity]) {
+                recoveryRecommendation.textContent = recommendations[intensity];
+            }
         });
     });
 }
@@ -361,7 +353,7 @@ function animateValue(element, start, end, duration) {
 }
 
 /* ========================================
-   Smooth Scroll Reveal
+   Smooth Scroll Reveal (unused helpers)
    ======================================== */
 
 function revealOnScroll() {
@@ -380,53 +372,6 @@ function revealOnScroll() {
 
 window.addEventListener('scroll', revealOnScroll);
 window.addEventListener('load', revealOnScroll);
-
-/* ========================================
-   Parallax Effects
-   ======================================== */
-
-function initParallax() {
-    const orbs = document.querySelectorAll('.gradient-orb');
-    
-    window.addEventListener('scroll', () => {
-        const scrollY = window.scrollY;
-        
-        orbs.forEach((orb, index) => {
-            const speed = 0.1 + (index * 0.05);
-            orb.style.transform = `translateY(${scrollY * speed}px)`;
-        });
-    });
-}
-
-initParallax();
-
-/* ========================================
-   Button Hover Effects
-   ======================================== */
-
-document.querySelectorAll('.btn-primary, .btn-secondary').forEach(btn => {
-    btn.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-2px)';
-    });
-    
-    btn.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
-
-/* ========================================
-   Card Hover Effects
-   ======================================== */
-
-document.querySelectorAll('.vision-card, .tech-card, .feature-card').forEach(card => {
-    card.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-4px)';
-    });
-    
-    card.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0)';
-    });
-});
 
 /* ========================================
    Loading Animation
@@ -490,59 +435,52 @@ window.addEventListener('load', function() {
 function initMobileMenu() {
     const navbar = document.querySelector('.navbar');
     const navLinks = document.querySelector('.nav-links');
+    const navActions = document.querySelector('.nav-actions');
+    if (!navbar || !navLinks || !navActions) return;
     
+    const isMobile = window.innerWidth <= 768;
+    let menuBtn = document.querySelector('.mobile-menu-btn');
+
+    if (!isMobile) {
+        if (menuBtn) menuBtn.remove();
+        navLinks.classList.remove('mobile-open');
+        navActions.classList.remove('mobile-actions-hidden');
+        return;
+    }
+
     // Create mobile menu button if it doesn't exist
-    if (!document.querySelector('.mobile-menu-btn') && window.innerWidth <= 768) {
-        const menuBtn = document.createElement('button');
+    if (!menuBtn) {
+        menuBtn = document.createElement('button');
+        menuBtn.type = 'button';
         menuBtn.className = 'mobile-menu-btn';
-        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-        menuBtn.style.cssText = `
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--gray-100);
-            border: none;
-            border-radius: var(--radius-md);
-            font-size: 1.25rem;
-            color: var(--gray-700);
-            cursor: pointer;
-        `;
-        
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('mobile-open');
+        menuBtn.setAttribute('aria-label', 'Toggle navigation menu');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.innerHTML = '<i class="fas fa-bars" aria-hidden="true"></i>';
+
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.toggle('mobile-open');
+            menuBtn.setAttribute('aria-expanded', String(isOpen));
         });
-        
-        navbar.querySelector('.nav-actions').before(menuBtn);
-        
-        // Add mobile styles
-        const style = document.createElement('style');
-        style.textContent = `
-            @media (max-width: 768px) {
-                .nav-links {
-                    position: absolute;
-                    top: 100%;
-                    left: 0;
-                    right: 0;
-                    background: var(--white);
-                    flex-direction: column;
-                    padding: var(--space-md);
-                    display: none;
-                    box-shadow: var(--shadow-lg);
-                }
-                
-                .nav-links.mobile-open {
-                    display: flex;
-                }
-                
-                .nav-link {
-                    width: 100%;
-                    padding: var(--space-md);
-                }
-            }
-        `;
-        document.head.appendChild(style);
+
+        // Close on nav item click
+        navLinks.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('mobile-open');
+                menuBtn.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        // Close when tapping outside
+        document.addEventListener('click', (e) => {
+            if (!navLinks.classList.contains('mobile-open')) return;
+            const target = e.target;
+            if (target instanceof Node && (navbar.contains(target))) return;
+            navLinks.classList.remove('mobile-open');
+            menuBtn.setAttribute('aria-expanded', 'false');
+        });
+
+        navActions.before(menuBtn);
     }
 }
 

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ArchFit — Personalized Recovery & Training Optimization</title>
-    <meta name="description" content="ArchFit is a revolutionary AI-powered recovery and training optimization platform that analyzes physiological signals to help athletes and fitness enthusiasts optimize their training timing and recovery.">
+    <meta name="description" content="ArchFit is a privacy-first recovery and training companion that turns Apple Watch signals into clear, personalized guidance — on device.">
+    <meta name="theme-color" content="#007AFF">
     <link rel="canonical" href="https://archfit.github.io/">
 
     <!-- Open Graph (LinkedIn) -->
@@ -12,14 +13,19 @@
     <meta property="og:site_name" content="ArchFit">
     <meta property="og:url" content="https://archfit.github.io/">
     <meta property="og:title" content="ArchFit — Personalized Recovery & Training Optimization">
-    <meta property="og:description" content="A sneak peek into ArchFit: an AI-powered recovery and training optimization platform. Follow development and updates on GitHub.">
+    <meta property="og:description" content="A sneak peek into ArchFit: privacy-first, on-device recovery and training guidance.">
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/54711622?v=4">
 
     <!-- Twitter/X cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="ArchFit — Personalized Recovery & Training Optimization">
-    <meta name="twitter:description" content="A sneak peek into ArchFit: an AI-powered recovery and training optimization platform. Follow development and updates on GitHub.">
+    <meta name="twitter:description" content="A sneak peek into ArchFit: privacy-first, on-device recovery and training guidance.">
     <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/54711622?v=4">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="ArchFit">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.webmanifest">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="assets/fontawesome/css/all.min.css">
 </head>
@@ -34,15 +40,16 @@
         </div>
         <div class="nav-links">
             <a href="#vision" class="nav-link active">Vision</a>
-            <a href="#technology" class="nav-link">Technology</a>
+            <a href="#principles" class="nav-link">Principles</a>
             <a href="#features" class="nav-link">Features</a>
             <a href="#demo" class="nav-link">Demo</a>
-            <a href="#architecture" class="nav-link">Architecture</a>
         </div>
         <div class="nav-actions">
-            <a href="https://github.com/yanitedhacker" class="btn-github" target="_blank" rel="noopener noreferrer">
-                <i class="fab fa-github"></i>
-                <span>View on GitHub</span>
+            <a href="https://github.com/yanitedhacker" class="btn-secondary nav-cta" target="_blank" rel="noopener noreferrer">
+                <span>GitHub</span>
+            </a>
+            <a href="#demo" class="btn-primary nav-cta">
+                <span>View demo</span>
             </a>
         </div>
     </nav>
@@ -64,27 +71,20 @@
                 <span class="gradient-text">Recover Faster.</span>
             </h1>
             <p class="hero-subtitle">
-                ArchFit is pioneering the future of personalized athletic recovery. 
-                Using advanced machine learning and Apple Watch sensor data, we predict 
-                your optimal training windows with unprecedented accuracy.
+                ArchFit helps you understand readiness, recovery, and training load using Apple Watch signals.
+                It’s built to be privacy-first and on-device, designed to keep the experience clear and minimal.
             </p>
             <div class="hero-stats">
                 <div class="stat-item">
-                    <span class="stat-number" data-target="85">0</span>
-                    <span class="stat-suffix">%</span>
-                    <span class="stat-label">Prediction Accuracy</span>
+                    <span class="stat-label">On-device insights</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
-                    <span class="stat-number" data-target="50">0</span>
-                    <span class="stat-suffix">+</span>
-                    <span class="stat-label">ML Models</span>
+                    <span class="stat-label">Privacy-first by design</span>
                 </div>
                 <div class="stat-divider"></div>
                 <div class="stat-item">
-                    <span class="stat-number" data-target="14">0</span>
-                    <span class="stat-suffix">d</span>
-                    <span class="stat-label">Forecast Horizon</span>
+                    <span class="stat-label">Clear, minimal guidance</span>
                 </div>
             </div>
             <div class="hero-actions">
@@ -92,8 +92,8 @@
                     <span>See It In Action</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
-                <a href="#technology" class="btn-secondary">
-                    <span>How It Works</span>
+                <a href="#principles" class="btn-secondary">
+                    <span>Principles</span>
                 </a>
             </div>
         </div>
@@ -163,8 +163,7 @@
                     </div>
                     <h3>AI-Powered Insights</h3>
                     <p>
-                        Our proprietary machine learning models analyze hundreds of physiological signals 
-                        to predict your recovery status with clinical-grade accuracy.
+                        Personalized, on-device intelligence turns your signals into simple, actionable guidance — without exposing raw data.
                     </p>
                 </div>
                 <div class="vision-card">
@@ -183,8 +182,7 @@
                     </div>
                     <h3>Privacy First</h3>
                     <p>
-                        Your health data never leaves your device. All ML inference happens locally, 
-                        ensuring complete privacy with zero compromises on capability.
+                        Your health data stays on your device. ArchFit is designed to minimize collection, maximize clarity, and avoid data dumps.
                     </p>
                 </div>
             </div>
@@ -198,89 +196,37 @@
         </div>
     </section>
 
-    <!-- Technology Section -->
-    <section class="technology-section" id="technology">
+    <!-- Principles Section -->
+    <section class="principles-section" id="principles">
         <div class="section-container">
-            <div class="section-header">
-                <span class="section-tag">Technology</span>
-                <h2>Built on Cutting-Edge Science</h2>
+            <div class="section-header centered">
+                <span class="section-tag">Principles</span>
+                <h2>Designed for clarity and trust</h2>
                 <p class="section-subtitle">
-                    Every component of ArchFit is engineered for performance, accuracy, and reliability.
+                    ArchFit focuses on a small set of signals and turns them into guidance you can act on — without exposing system internals.
                 </p>
             </div>
-            <div class="tech-grid">
-                <div class="tech-card">
-                    <div class="tech-header">
-                        <div class="tech-icon">
-                            <i class="fas fa-microchip"></i>
-                        </div>
-                        <h3>Core ML</h3>
+            <div class="principles-grid">
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="tech-content">
-                        <p>
-                            XGBoost gradient boosted trees for readiness scoring, combined with 
-                            Hidden Markov Models for fatigue state classification.
-                        </p>
-                        <div class="tech-tags">
-                            <span>Swift</span>
-                            <span>Core ML</span>
-                            <span>Python</span>
-                        </div>
-                    </div>
+                    <h3>Privacy-first</h3>
+                    <p>Your data stays on your device. Insights are designed to be useful without being invasive.</p>
                 </div>
-                <div class="tech-card">
-                    <div class="tech-header">
-                        <div class="tech-icon">
-                            <i class="fas fa-database"></i>
-                        </div>
-                        <h3>HealthKit</h3>
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-bolt"></i>
                     </div>
-                    <div class="tech-content">
-                        <p>
-                            Direct integration with Apple Health for heart rate, HRV, sleep analysis, 
-                            and workout data with enterprise-grade reliability.
-                        </p>
-                        <div class="tech-tags">
-                            <span>HealthKit</span>
-                            <span>WatchConnectivity</span>
-                        </div>
-                    </div>
+                    <h3>Lightweight</h3>
+                    <p>Built to be battery-friendly and fast, with a minimal UI and no cluttered dashboards.</p>
                 </div>
-                <div class="tech-card">
-                    <div class="tech-header">
-                        <div class="tech-icon">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <h3>Encryption</h3>
+                <div class="principle-card">
+                    <div class="principle-icon">
+                        <i class="fas fa-eye"></i>
                     </div>
-                    <div class="tech-content">
-                        <p>
-                            Military-grade SQLite encryption ensures your sensitive health data 
-                            remains secure, even if your device is compromised.
-                        </p>
-                        <div class="tech-tags">
-                            <span>SQLCipher</span>
-                            <span>iOS Keychain</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="tech-card">
-                    <div class="tech-header">
-                        <div class="tech-icon">
-                            <i class="fas fa-sync-alt"></i>
-                        </div>
-                        <h3>Sync Engine</h3>
-                    </div>
-                    <div class="tech-content">
-                        <p>
-                            Real-time synchronization between iPhone and Apple Watch using 
-                            native WatchConnectivity framework for minimal latency.
-                        </p>
-                        <div class="tech-tags">
-                            <span>WatchConnectivity</span>
-                            <span>Combine</span>
-                        </div>
-                    </div>
+                    <h3>Explainable outcomes</h3>
+                    <p>Clear takeaways that help you decide when to train harder or back off — without revealing proprietary logic.</p>
                 </div>
             </div>
         </div>
@@ -339,8 +285,7 @@
                     </div>
                     <h3>Training Load Analytics</h3>
                     <p>
-                        ACWR (Acute:Chronic Workload Ratio) tracking with historical 
-                        trends and predictive insights.
+                        High-level training balance and trend insights designed to support consistency over spikes.
                     </p>
                 </div>
                 <div class="feature-card">
@@ -372,79 +317,66 @@
         <div class="section-container">
             <div class="section-header centered">
                 <span class="section-tag">Interactive Demo</span>
-                <h2>Experience ArchFit</h2>
+                <h2>Example insights</h2>
                 <p class="section-subtitle">
-                    See how ArchFit analyzes your data to generate personalized insights.
+                    Try simplified, high-level examples of what ArchFit might surface — without exposing calculations or internal scoring.
                 </p>
             </div>
             <div class="demo-container">
                 <div class="demo-tabs">
                     <button class="demo-tab active" data-demo="readiness">
                         <i class="fas fa-gauge-high"></i>
-                        Readiness Calculator
+                        Readiness preview
                     </button>
-                    <button class="demo-tab" data-demo="acwr">
+                    <button class="demo-tab" data-demo="load">
                         <i class="fas fa-sliders-h"></i>
-                        ACWR Simulator
+                        Load balance
                     </button>
                     <button class="demo-tab" data-demo="recovery">
                         <i class="fas fa-clock"></i>
-                        Recovery Predictor
+                        Recovery timing
                     </button>
                 </div>
                 <div class="demo-content">
                     <!-- Readiness Demo -->
                     <div class="demo-panel active" id="readiness-demo">
                         <div class="demo-description">
-                            <h3>Readiness Score Calculator</h3>
+                            <h3>Readiness preview</h3>
                             <p>
-                                Adjust the parameters below to see how different physiological 
-                                factors affect your predicted readiness score.
+                                Choose a few high-level inputs to preview the kind of guidance you might get.
                             </p>
                         </div>
                         <div class="demo-interactive">
-                            <div class="slider-group">
-                                <label>
-                                    <span>Sleep Duration</span>
-                                    <span class="slider-value" id="sleepValue">7.5h</span>
-                                </label>
-                                <input type="range" id="sleepSlider" min="4" max="10" step="0.5" value="7.5">
-                                <div class="slider-labels">
-                                    <span>4h</span>
-                                    <span>10h</span>
+                            <div class="choice-group">
+                                <div class="choice-label">Sleep</div>
+                                <div class="choice-buttons" role="group" aria-label="Sleep">
+                                    <button class="choice-btn" data-choice="sleep" data-value="low">Short</button>
+                                    <button class="choice-btn active" data-choice="sleep" data-value="typical">Typical</button>
+                                    <button class="choice-btn" data-choice="sleep" data-value="high">Long</button>
                                 </div>
                             </div>
-                            <div class="slider-group">
-                                <label>
-                                    <span>HRV (ms)</span>
-                                    <span class="slider-value" id="hrvValue">45</span>
-                                </label>
-                                <input type="range" id="hrvSlider" min="20" max="80" step="1" value="45">
-                                <div class="slider-labels">
-                                    <span>20</span>
-                                    <span>80ms</span>
+                            <div class="choice-group">
+                                <div class="choice-label">Recovery signals</div>
+                                <div class="choice-buttons" role="group" aria-label="Recovery signals">
+                                    <button class="choice-btn" data-choice="recovery" data-value="low">Below baseline</button>
+                                    <button class="choice-btn active" data-choice="recovery" data-value="typical">Near baseline</button>
+                                    <button class="choice-btn" data-choice="recovery" data-value="high">Above baseline</button>
                                 </div>
                             </div>
-                            <div class="slider-group">
-                                <label>
-                                    <span>Resting HR (bpm)</span>
-                                    <span class="slider-value" id="hrValue">55</span>
-                                </label>
-                                <input type="range" id="hrSlider" min="40" max="80" step="1" value="55">
-                                <div class="slider-labels">
-                                    <span>40</span>
-                                    <span>80</span>
+                            <div class="choice-group">
+                                <div class="choice-label">Recent training</div>
+                                <div class="choice-buttons" role="group" aria-label="Recent training">
+                                    <button class="choice-btn" data-choice="load" data-value="low">Light</button>
+                                    <button class="choice-btn active" data-choice="load" data-value="typical">Typical</button>
+                                    <button class="choice-btn" data-choice="load" data-value="high">Heavy</button>
                                 </div>
                             </div>
-                            <div class="slider-group">
-                                <label>
-                                    <span>Training Load (AU)</span>
-                                    <span class="slider-value" id="loadValue">300</span>
-                                </label>
-                                <input type="range" id="loadSlider" min="0" max="600" step="10" value="300">
-                                <div class="slider-labels">
-                                    <span>0</span>
-                                    <span>600 AU</span>
+                            <div class="choice-group">
+                                <div class="choice-label">Stress</div>
+                                <div class="choice-buttons" role="group" aria-label="Stress">
+                                    <button class="choice-btn" data-choice="stress" data-value="low">Low</button>
+                                    <button class="choice-btn active" data-choice="stress" data-value="typical">Typical</button>
+                                    <button class="choice-btn" data-choice="stress" data-value="high">High</button>
                                 </div>
                             </div>
                         </div>
@@ -455,79 +387,59 @@
                                     <circle class="result-progress" cx="50" cy="50" r="45" id="resultProgress"/>
                                 </svg>
                                 <div class="result-value">
-                                    <span class="score" id="demoScore">78</span>
-                                    <span class="label">Score</span>
+                                    <span class="score" id="demoScore">Good</span>
+                                    <span class="label">Readiness</span>
                                 </div>
                             </div>
                             <div class="result-status">
                                 <span class="status-badge" id="demoStatus">Good</span>
                             </div>
                             <div class="result-factors">
-                                <h4>Contributing Factors</h4>
-                                <div class="factor-bars" id="factorBars">
-                                    <div class="factor-bar">
-                                        <span class="factor-label">Sleep Quality</span>
-                                        <div class="factor-track">
-                                            <div class="factor-fill" style="width: 75%"></div>
-                                        </div>
-                                        <span class="factor-value">75%</span>
-                                    </div>
-                                    <div class="factor-bar">
-                                        <span class="factor-label">HRV Recovery</span>
-                                        <div class="factor-track">
-                                            <div class="factor-fill" style="width: 82%"></div>
-                                        </div>
-                                        <span class="factor-value">82%</span>
-                                    </div>
-                                    <div class="factor-bar">
-                                        <span class="factor-label">Training Load</span>
-                                        <div class="factor-track">
-                                            <div class="factor-fill" style="width: 65%"></div>
-                                        </div>
-                                        <span class="factor-value">65%</span>
-                                    </div>
-                                </div>
+                                <h4>What this might mean</h4>
+                                <ul class="insight-bullets" id="readinessBullets">
+                                    <li>Good day for normal training.</li>
+                                    <li>Prioritize consistency and a solid warm-up.</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                    <!-- ACWR Demo -->
-                    <div class="demo-panel" id="acwr-demo">
+                    <!-- Load Demo -->
+                    <div class="demo-panel" id="load-demo">
                         <div class="demo-description">
-                            <h3>ACWR Simulator</h3>
+                            <h3>Load balance</h3>
                             <p>
-                                Explore how acute and chronic training loads interact to create 
-                                your ACWR (Acute:Chronic Workload Ratio).
+                                A high-level view of training balance over time — intentionally simplified.
                             </p>
                         </div>
-                        <div class="acwr-visualizer">
-                            <div class="acwr-chart">
-                                <div class="chart-bars" id="acwrBars">
+                        <div class="load-visualizer">
+                            <div class="load-chart">
+                                <div class="chart-bars" id="loadBars">
                                     <div class="chart-bar acute">
                                         <div class="bar-fill" style="height: 60%"></div>
-                                        <span class="bar-label">Acute</span>
+                                        <span class="bar-label">Recent</span>
                                     </div>
                                     <div class="chart-bar chronic">
                                         <div class="bar-fill" style="height: 80%"></div>
-                                        <span class="bar-label">Chronic</span>
+                                        <span class="bar-label">Baseline</span>
                                     </div>
                                 </div>
-                                <div class="acwr-result">
-                                    <span class="acwr-number" id="acwrNumber">0.85</span>
-                                    <span class="acwr-label">ACWR Ratio</span>
+                                <div class="load-result">
+                                    <span class="load-status" id="loadStatus">Balanced</span>
+                                    <span class="load-label">Load balance</span>
                                 </div>
                             </div>
-                            <div class="acwr-info">
-                                <div class="acwr-zone optimal">
-                                    <span class="zone-label">Optimal Zone</span>
-                                    <span class="zone-range">0.8 - 1.3</span>
+                            <div class="load-info">
+                                <div class="load-zone optimal">
+                                    <span class="zone-label">Balanced</span>
+                                    <span class="zone-range">Keep building steadily</span>
                                 </div>
-                                <div class="acwr-zone warning">
-                                    <span class="zone-label">Caution</span>
-                                    <span class="zone-range">1.3 - 1.5</span>
+                                <div class="load-zone warning">
+                                    <span class="zone-label">Building</span>
+                                    <span class="zone-range">Add load gradually</span>
                                 </div>
-                                <div class="acwr-zone danger">
-                                    <span class="zone-label">High Risk</span>
-                                    <span class="zone-range">&gt; 1.5</span>
+                                <div class="load-zone danger">
+                                    <span class="zone-label">Overreaching</span>
+                                    <span class="zone-range">Consider an easier day</span>
                                 </div>
                             </div>
                         </div>
@@ -535,132 +447,52 @@
                     <!-- Recovery Demo -->
                     <div class="demo-panel" id="recovery-demo">
                         <div class="demo-description">
-                            <h3>Recovery Time Predictor</h3>
+                            <h3>Recovery timing</h3>
                             <p>
-                                See how different workout intensities affect your estimated 
-                                recovery time.
+                                A simplified preview of recovery guidance — not a precise prediction.
                             </p>
                         </div>
                         <div class="recovery-options">
-                            <button class="recovery-btn" data-intensity="light" data-time="6">
+                            <button class="recovery-btn" data-intensity="light" data-time="soon">
                                 <i class="fas fa-walking"></i>
                                 <span>Light</span>
-                                <span class="time">~6 hours</span>
+                                <span class="time">Soon</span>
                             </button>
-                            <button class="recovery-btn active" data-intensity="moderate" data-time="12">
+                            <button class="recovery-btn active" data-intensity="moderate" data-time="later">
                                 <i class="fas fa-running"></i>
                                 <span>Moderate</span>
-                                <span class="time">~12 hours</span>
+                                <span class="time">Later today</span>
                             </button>
-                            <button class="recovery-btn" data-intensity="hard" data-time="24">
+                            <button class="recovery-btn" data-intensity="hard" data-time="tomorrow">
                                 <i class="fas fa-fast-forward"></i>
                                 <span>Hard</span>
-                                <span class="time">~24 hours</span>
+                                <span class="time">Tomorrow</span>
                             </button>
-                            <button class="recovery-btn" data-intensity="extreme" data-time="48">
+                            <button class="recovery-btn" data-intensity="extreme" data-time="multi">
                                 <i class="fas fa-bolt"></i>
                                 <span>Extreme</span>
-                                <span class="time">~48 hours</span>
+                                <span class="time">Multiple days</span>
                             </button>
                         </div>
                         <div class="recovery-timeline">
-                            <div class="timeline-progress" id="timelineProgress"></div>
+                            <div class="timeline-progress" aria-hidden="true">
+                                <div class="timeline-fill" id="timelineFill"></div>
+                            </div>
                             <div class="timeline-markers">
                                 <span class="marker">Now</span>
-                                <span class="marker" id="recoveryTimeMarker">12h</span>
-                                <span class="marker">24h</span>
-                                <span class="marker">48h</span>
+                                <span class="marker" id="recoveryTimeMarker">Later</span>
+                                <span class="marker">Tomorrow</span>
+                                <span class="marker">Later</span>
                             </div>
                         </div>
                         <div class="recovery-recommendation">
                             <i class="fas fa-lightbulb"></i>
                             <p id="recoveryRecommendation">
-                                Based on your current recovery status, a moderate workout is recommended. 
-                                Your body should be fully recovered in approximately 12 hours.
+                                Based on a high-level view of your recent training and recovery, moderate effort can be appropriate.
+                                Treat this as guidance — listen to your body.
                             </p>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Architecture Section -->
-    <section class="architecture-section" id="architecture">
-        <div class="section-container">
-            <div class="section-header centered">
-                <span class="section-tag">Architecture</span>
-                <h2>High-Level Design</h2>
-                <p class="section-subtitle">
-                    Built to be privacy-first and battery-friendly, with most intelligence running close to your data.
-                </p>
-            </div>
-            <div class="architecture-diagram">
-                <div class="arch-layer healthkit">
-                    <div class="arch-label">Signals</div>
-                    <div class="arch-components horizontal">
-                        <div class="arch-component">
-                            <i class="fas fa-heart"></i>
-                            <span>Biometrics</span>
-                        </div>
-                        <div class="arch-component">
-                            <i class="fas fa-moon"></i>
-                            <span>Sleep</span>
-                        </div>
-                        <div class="arch-component">
-                            <i class="fas fa-dumbbell"></i>
-                            <span>Training</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="arch-connector">
-                    <i class="fas fa-exchange-alt"></i>
-                </div>
-                <div class="arch-layer watch">
-                    <div class="arch-label">Wearable & Phone</div>
-                    <div class="arch-components">
-                        <div class="arch-component">
-                            <i class="fas fa-heartbeat"></i>
-                            <span>Collection</span>
-                        </div>
-                        <div class="arch-component">
-                            <i class="fas fa-lock"></i>
-                            <span>Secure Storage</span>
-                        </div>
-                        <div class="arch-component">
-                            <i class="fas fa-brain"></i>
-                            <span>On-Device Insights</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="arch-connector">
-                    <i class="fas fa-exchange-alt"></i>
-                </div>
-                <div class="arch-layer cloud">
-                    <div class="arch-label">Optional</div>
-                    <div class="arch-components">
-                        <div class="arch-component">
-                            <i class="fas fa-cloud"></i>
-                            <span>Updates & Sync</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="design-principles">
-                <div class="principle">
-                    <i class="fas fa-bolt"></i>
-                    <h4>Battery Efficient</h4>
-                    <p>Optimized for all-day battery life with background processing</p>
-                </div>
-                <div class="principle">
-                    <i class="fas fa-shield-alt"></i>
-                    <h4>Privacy First</h4>
-                    <p>All processing happens on-device, never in the cloud</p>
-                </div>
-                <div class="principle">
-                    <i class="fas fa-rocket"></i>
-                    <h4>App Store Compliant</h4>
-                    <p>Built following Apple's guidelines for health apps</p>
                 </div>
             </div>
         </div>
@@ -670,16 +502,11 @@
     <section class="cta-section">
         <div class="section-container">
             <div class="cta-content">
-                <h2>Ready to Transform Your Training?</h2>
+                <h2>Want early access?</h2>
                 <p>
-                    ArchFit is currently in early development. Join us on GitHub to follow 
-                    the journey and contribute to the future of personalized recovery.
+                    ArchFit is in early development. If you’d like to follow along or request early access, reach out.
                 </p>
                 <div class="cta-actions">
-                    <a href="https://github.com/yanitedhacker" class="btn-primary large" target="_blank" rel="noopener noreferrer">
-                        <i class="fab fa-github"></i>
-                        <span>Star on GitHub</span>
-                    </a>
                     <a href="mailto:archiehojai99@gmail.com" class="btn-secondary large">
                         <i class="fas fa-envelope"></i>
                         <span>Get in Touch</span>
@@ -704,7 +531,7 @@
                     <div class="footer-column">
                         <h4>Project</h4>
                         <a href="#vision">Vision</a>
-                        <a href="#technology">Technology</a>
+                        <a href="#principles">Principles</a>
                         <a href="#features">Features</a>
                         <a href="#demo">Demo</a>
                     </div>
@@ -716,15 +543,12 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 ArchFit. Open source under MIT License.</p>
-                <p class="built-with">
-                    Built with Apple HealthKit, Core ML, and SwiftUI
-                </p>
+                <p>&copy; 2026 ArchFit.</p>
+                <p class="built-with">Privacy-first. On-device.</p>
             </div>
         </div>
     </footer>
 
-    <script src="js/chart.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
