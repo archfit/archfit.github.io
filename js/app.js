@@ -88,6 +88,7 @@ function initReadinessDemo() {
     }
 
     const state = {
+        goal: getActiveChoiceValue('goal') || 'maintain',
         sleep: getActiveChoiceValue('sleep') || 'typical',
         recovery: getActiveChoiceValue('recovery') || 'typical',
         load: getActiveChoiceValue('load') || 'typical',
@@ -145,8 +146,8 @@ function initReadinessDemo() {
         const bullets = [];
 
         if (result.status === 'Great') {
-            bullets.push('Strong day for normal training or a quality session.');
-            bullets.push('Stay consistent and keep the warm-up solid.');
+            bullets.push('Strong day to move your goal forward.');
+            bullets.push('Keep the warm-up solid and stay consistent.');
         } else if (result.status === 'Good') {
             bullets.push('Good day for normal training.');
             bullets.push('If you’re unsure, start easy and build.');
@@ -163,6 +164,16 @@ function initReadinessDemo() {
         if (state.recovery === 'low') bullets[0] = 'Recovery signals look down: favor light training today.';
         if (state.load === 'high') bullets[0] = 'Recent training is heavy: consider a lighter day.';
         if (state.stress === 'high') bullets[0] = 'High stress: keep training simple and controlled.';
+
+        if (state.goal === 'build') {
+            bullets[1] = 'Build steadily: add small progress, avoid spikes.';
+        }
+        if (state.goal === 'maintain') {
+            bullets[1] = 'Maintain the habit: keep today simple and repeatable.';
+        }
+        if (state.goal === 'peak') {
+            bullets[1] = 'Save higher intensity for your best readiness day.';
+        }
 
         readinessBullets.innerHTML = bullets.slice(0, 2).map(t => `<li>${t}</li>`).join('');
     }
@@ -186,19 +197,74 @@ function initReadinessDemo() {
    Load Demo
    ======================================== */
 
+let updateLoadDemo = null;
+
 function initLoadDemo() {
-    // Load demo is visual-only for this landing page.
-    // Bars animate when the tab is activated.
+    const sessionsRange = document.getElementById('sessionsRange');
+    const intensityRange = document.getElementById('intensityRange');
+    const sessionsValue = document.getElementById('sessionsValue');
+    const intensityValue = document.getElementById('intensityValue');
+    const recentBar = document.querySelector('.chart-bar.acute .bar-fill');
+    const baselineBar = document.querySelector('.chart-bar.chronic .bar-fill');
+    const loadStatus = document.getElementById('loadStatus');
+    const zones = document.querySelectorAll('.load-zone');
+
+    if (!sessionsRange || !intensityRange || !sessionsValue || !intensityValue || !recentBar || !baselineBar || !loadStatus) {
+        return;
+    }
+
+    function clamp(value, min, max) {
+        return Math.max(min, Math.min(max, value));
+    }
+
+    function intensityLabel(value) {
+        if (value === 1) return 'Easy';
+        if (value === 3) return 'Hard';
+        return 'Steady';
+    }
+
+    function update() {
+        const sessions = parseInt(sessionsRange.value, 10);
+        const intensity = parseInt(intensityRange.value, 10);
+
+        sessionsValue.textContent = String(sessions);
+        intensityValue.textContent = intensityLabel(intensity);
+
+        const recent = clamp(30 + sessions * 8 + intensity * 6, 35, 95);
+        const baseline = clamp(50 + intensity * 10 + (sessions - 4) * 4, 45, 90);
+
+        recentBar.style.height = `${recent}%`;
+        baselineBar.style.height = `${baseline}%`;
+
+        let statusKey = 'balanced';
+        if (recent > baseline + 8) statusKey = 'overreaching';
+        if (recent < baseline - 8) statusKey = 'building';
+
+        const statusLabels = {
+            balanced: { label: 'Balanced', color: '#22C55E' },
+            building: { label: 'Building', color: '#F59E0B' },
+            overreaching: { label: 'Overreaching', color: '#EF4444' }
+        };
+
+        const status = statusLabels[statusKey];
+        loadStatus.textContent = status.label;
+        loadStatus.style.color = status.color;
+
+        zones.forEach(zone => {
+            const key = zone.dataset.zone;
+            zone.classList.toggle('is-active', key === statusKey);
+        });
+    }
+
+    sessionsRange.addEventListener('input', update);
+    intensityRange.addEventListener('input', update);
+    update();
+    updateLoadDemo = update;
 }
 
 function animateLoadChart() {
-    const recentBar = document.querySelector('.chart-bar.acute .bar-fill');
-    const baselineBar = document.querySelector('.chart-bar.chronic .bar-fill');
-    
-    if (recentBar && baselineBar) {
-        // Keep values arbitrary (visual only).
-        recentBar.style.height = '62%';
-        baselineBar.style.height = '78%';
+    if (typeof updateLoadDemo === 'function') {
+        updateLoadDemo();
     }
 }
 
@@ -211,6 +277,7 @@ function initRecoveryDemo() {
     const timelineFill = document.getElementById('timelineFill');
     const recoveryTimeMarker = document.getElementById('recoveryTimeMarker');
     const recoveryRecommendation = document.getElementById('recoveryRecommendation');
+    const metaButtons = document.querySelectorAll('.meta-btn');
     
     const recommendations = {
         light: 'Light activity recommended. Your recovery is nearly complete. Consider an easy recovery session.',
@@ -232,6 +299,23 @@ function initRecoveryDemo() {
         tomorrow: 75,
         multi: 92
     };
+
+    let timeMinutes = 20;
+
+    function updateRecommendation(intensity) {
+        if (!recoveryRecommendation || !intensity) return;
+
+        const base = recommendations[intensity] ?? recommendations.moderate;
+        let timeNote = 'Aim for a compact session with a long warm-up.';
+
+        if (timeMinutes >= 45) {
+            timeNote = 'You have time — add easy volume and finish with mobility.';
+        } else if (timeMinutes >= 30) {
+            timeNote = 'Steady session fits well with a focused warm-up.';
+        }
+
+        recoveryRecommendation.textContent = `${base} ${timeNote}`;
+    }
     
     recoveryButtons.forEach(btn => {
         btn.addEventListener('click', function() {
@@ -248,11 +332,23 @@ function initRecoveryDemo() {
             if (recoveryTimeMarker) recoveryTimeMarker.textContent = timingLabel[timeKey] ?? 'Later';
             
             // Update recommendation
-            if (recoveryRecommendation && intensity && recommendations[intensity]) {
-                recoveryRecommendation.textContent = recommendations[intensity];
-            }
+            updateRecommendation(intensity);
         });
     });
+
+    metaButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            metaButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            timeMinutes = parseInt(btn.dataset.minutes ?? '20', 10);
+
+            const activeRecovery = document.querySelector('.recovery-btn.active');
+            updateRecommendation(activeRecovery ? activeRecovery.dataset.intensity : 'moderate');
+        });
+    });
+
+    const activeRecovery = document.querySelector('.recovery-btn.active');
+    updateRecommendation(activeRecovery ? activeRecovery.dataset.intensity : 'moderate');
 }
 
 /* ========================================
