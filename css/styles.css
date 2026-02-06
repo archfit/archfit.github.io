@@ -422,6 +422,12 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--space-md);
 }
 
+.hero-beta-note {
+    margin-top: var(--space-md);
+    font-size: 0.9375rem;
+    color: var(--gray-500);
+}
+
 .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -644,6 +650,40 @@ h1, h2, h3, h4, h5, h6 {
     gap: var(--space-sm);
     color: var(--gray-500);
     font-size: 0.75rem;
+}
+
+/* ========================================
+   Trust Strip
+   ======================================== */
+
+.trust-strip {
+    padding: var(--space-lg) 0;
+    background: rgba(15, 118, 110, 0.05);
+    border-top: 1px solid rgba(15, 118, 110, 0.08);
+    border-bottom: 1px solid rgba(15, 118, 110, 0.08);
+}
+
+.trust-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: var(--space-md);
+}
+
+.trust-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: var(--radius-full);
+    border: 1px solid rgba(15, 118, 110, 0.12);
+    padding: 0.625rem 0.75rem;
+    font-size: 0.8125rem;
+    color: var(--gray-700);
+}
+
+.trust-pill i {
+    color: var(--primary-color);
 }
 
 .mouse {
@@ -1079,6 +1119,254 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: var(--shadow-xl);
     border: 1px solid rgba(15, 118, 110, 0.08);
     overflow: hidden;
+}
+
+.demo-showcase {
+    margin-top: var(--space-2xl);
+    display: grid;
+    grid-template-columns: minmax(0, 380px) minmax(0, 1fr);
+    gap: var(--space-2xl);
+    align-items: stretch;
+}
+
+.screenshot-carousel {
+    background: var(--gray-900);
+    border-radius: calc(var(--radius-xl) + 4px);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.screenshot-frame {
+    border-radius: calc(var(--radius-xl) - 4px);
+    background: linear-gradient(180deg, #12100D, #272119);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 10px;
+}
+
+.screenshot-slide {
+    width: 100%;
+    aspect-ratio: 390 / 844;
+    border-radius: calc(var(--radius-lg) + 2px);
+    display: block;
+    object-fit: cover;
+    object-position: center;
+}
+
+.screenshot-controls {
+    margin-top: var(--space-md);
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.screenshot-rail {
+    display: none;
+}
+
+.screenshot-thumb {
+    background: transparent;
+    border: none;
+    padding: 0;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 2px solid transparent;
+}
+
+.screenshot-thumb img {
+    display: block;
+    width: 64px;
+    height: 110px;
+    object-fit: cover;
+}
+
+.screenshot-thumb.active {
+    border-color: var(--primary-light);
+}
+
+.carousel-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    color: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform var(--transition-fast), background var(--transition-fast);
+}
+
+.carousel-btn:hover {
+    background: rgba(255, 255, 255, 0.24);
+    transform: translateY(-1px);
+}
+
+.carousel-btn:focus-visible,
+.screenshot-dot:focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 2px;
+}
+
+.screenshot-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.screenshot-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    border: none;
+}
+
+.screenshot-dot.active {
+    background: var(--primary-light);
+}
+
+.screenshot-meta {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-xl);
+    padding: var(--space-2xl);
+}
+
+.meta-tag {
+    display: inline-flex;
+    margin-bottom: var(--space-sm);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--primary-dark);
+    background: rgba(15, 118, 110, 0.12);
+    border-radius: var(--radius-full);
+    padding: 0.25rem 0.625rem;
+}
+
+.screenshot-meta h3 {
+    margin-bottom: var(--space-sm);
+}
+
+.screenshot-meta p {
+    color: var(--gray-600);
+    margin-bottom: var(--space-md);
+}
+
+.screenshot-points {
+    list-style: none;
+    display: grid;
+    gap: 0.5rem;
+}
+
+.screenshot-points li {
+    color: var(--gray-700);
+    font-size: 0.9375rem;
+    position: relative;
+    padding-left: 1.125rem;
+}
+
+.screenshot-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.55rem;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--primary-color);
+}
+
+/* ========================================
+   Team Section
+   ======================================== */
+
+.team-section {
+    padding: var(--space-4xl) 0;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-xl);
+}
+
+.team-card {
+    background: var(--white);
+    border: 1px solid rgba(15, 118, 110, 0.08);
+    border-radius: var(--radius-xl);
+    padding: var(--space-xl);
+    box-shadow: var(--shadow-md);
+}
+
+.team-role {
+    color: var(--primary-dark);
+    font-size: 0.875rem;
+    margin: 0.35rem 0 var(--space-md);
+}
+
+.team-card p {
+    color: var(--gray-600);
+}
+
+.team-tags {
+    margin-top: var(--space-md);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.team-tags span {
+    background: var(--gray-50);
+    border: 1px solid var(--gray-200);
+    border-radius: var(--radius-full);
+    padding: 0.25rem 0.625rem;
+    font-size: 0.75rem;
+    color: var(--gray-700);
+}
+
+.team-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-sm);
+    margin-top: var(--space-lg);
+}
+
+.team-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 0.7rem;
+    border-radius: var(--radius-full);
+    border: 1px solid var(--gray-200);
+    color: var(--gray-700);
+    font-size: 0.8125rem;
+}
+
+.team-links a:hover {
+    border-color: var(--gray-300);
+    background: var(--gray-50);
+}
+
+.team-proof {
+    margin-top: var(--space-2xl);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-md);
+}
+
+.team-proof div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: var(--space-md);
+    border-radius: var(--radius-lg);
+    background: rgba(15, 118, 110, 0.08);
+    color: var(--gray-800);
+    font-size: 0.875rem;
+}
+
+.team-proof i {
+    color: var(--primary-dark);
 }
 
 .demo-tabs {
@@ -1757,6 +2045,47 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0 auto var(--space-2xl);
 }
 
+.waitlist-form {
+    max-width: 560px;
+    margin: 0 auto var(--space-lg);
+    display: grid;
+    gap: 0.625rem;
+    text-align: left;
+}
+
+.waitlist-form label {
+    font-size: 0.875rem;
+    color: var(--gray-300);
+}
+
+.waitlist-form input,
+.waitlist-form select {
+    height: 44px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--gray-700);
+    background: var(--gray-800);
+    color: var(--white);
+    padding: 0 0.75rem;
+}
+
+.waitlist-form input:focus-visible,
+.waitlist-form select:focus-visible {
+    outline: 2px solid var(--primary-light);
+    outline-offset: 1px;
+    border-color: var(--primary-light);
+}
+
+.waitlist-form .btn-primary.large {
+    justify-content: center;
+    margin-top: var(--space-sm);
+}
+
+.waitlist-note {
+    font-size: 0.8125rem;
+    color: var(--gray-400);
+    margin-bottom: var(--space-lg);
+}
+
 .cta-actions {
     display: flex;
     justify-content: center;
@@ -1873,6 +2202,27 @@ h1, h2, h3, h4, h5, h6 {
     }
 
     .principle-card:last-child {
+        grid-column: span 2;
+    }
+
+    .trust-strip-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .demo-showcase {
+        grid-template-columns: 1fr;
+    }
+
+    .screenshot-carousel {
+        max-width: 420px;
+        margin: 0 auto;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .team-grid .team-card:last-child {
         grid-column: span 2;
     }
 }
@@ -2035,6 +2385,10 @@ h1, h2, h3, h4, h5, h6 {
 
     .hero-visual {
         display: none;
+    }
+
+    .hero-beta-note {
+        font-size: 0.875rem;
     }
 
     .scroll-indicator {
@@ -2420,6 +2774,54 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 0.8125rem;
     }
 
+    .trust-strip-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .trust-pill {
+        justify-content: flex-start;
+        border-radius: var(--radius-lg);
+    }
+
+    .demo-showcase {
+        gap: var(--space-lg);
+    }
+
+    .screenshot-meta {
+        padding: var(--space-lg);
+    }
+
+    .screenshot-rail {
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        gap: 0.625rem;
+        overflow-x: auto;
+        padding: 0.25rem 0.125rem 0.35rem;
+        margin-top: var(--space-sm);
+        scroll-snap-type: x mandatory;
+    }
+
+    .screenshot-thumb {
+        scroll-snap-align: center;
+    }
+
+    .team-section {
+        padding: var(--space-3xl) 0;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-grid .team-card:last-child {
+        grid-column: auto;
+    }
+
+    .team-proof {
+        grid-template-columns: 1fr;
+    }
+
     /* ---- CTA Section ---- */
     .cta-section {
         padding: var(--space-2xl) 0;
@@ -2438,6 +2840,10 @@ h1, h2, h3, h4, h5, h6 {
     .cta-content p {
         font-size: 0.9375rem;
         margin-bottom: var(--space-xl);
+    }
+
+    .waitlist-form {
+        margin-bottom: var(--space-md);
     }
 
     .cta-actions {
@@ -2547,6 +2953,28 @@ h1, h2, h3, h4, h5, h6 {
         max-width: 100%;
     }
 
+    .screenshot-carousel {
+        padding: var(--space-md);
+    }
+
+    .carousel-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .screenshot-thumb img {
+        width: 58px;
+        height: 100px;
+    }
+
+    .screenshot-meta {
+        padding: var(--space-md);
+    }
+
+    .team-card {
+        padding: var(--space-lg);
+    }
+
     .vision-card,
     .principle-card,
     .feature-card {
@@ -2601,6 +3029,11 @@ h1, h2, h3, h4, h5, h6 {
 
     .cta-content h2 {
         font-size: 1.25rem;
+    }
+
+    .waitlist-form input,
+    .waitlist-form select {
+        font-size: 0.9375rem;
     }
 
     .footer-links {

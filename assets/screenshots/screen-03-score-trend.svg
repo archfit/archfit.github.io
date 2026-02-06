@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" role="img" aria-label="ArchFit score trend mock screenshot">
+  <rect width="390" height="844" rx="36" fill="#f5f9ff"/>
+  <text x="30" y="78" font-family="Space Grotesk, sans-serif" font-size="42" font-weight="700" fill="#151515">Score Trend</text>
+  <rect x="24" y="116" width="342" height="360" rx="24" fill="#fff" stroke="#d4e3ff"/>
+  <text x="46" y="166" font-family="Space Grotesk, sans-serif" font-size="24" fill="#666">3 day streak</text>
+  <line x1="46" y1="406" x2="342" y2="406" stroke="#dbe7ff" stroke-width="2"/>
+  <line x1="46" y1="350" x2="342" y2="350" stroke="#dbe7ff" stroke-width="2"/>
+  <line x1="46" y1="294" x2="342" y2="294" stroke="#dbe7ff" stroke-width="2"/>
+  <polyline points="46,378 102,376 158,348 214,306 270,284 326,280" fill="none" stroke="#2f9eff" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="326" cy="280" r="8" fill="#2f9eff"/>
+  <rect x="24" y="500" width="342" height="152" rx="24" fill="#fff" stroke="#d4e3ff"/>
+  <text x="46" y="548" font-family="Space Grotesk, sans-serif" font-size="22" fill="#777">vs Yesterday</text>
+  <text x="46" y="586" font-family="Space Grotesk, sans-serif" font-size="38" font-weight="700" fill="#f15b5b">-5</text>
+  <text x="180" y="548" font-family="Space Grotesk, sans-serif" font-size="22" fill="#777">vs Week Avg</text>
+  <text x="180" y="586" font-family="Space Grotesk, sans-serif" font-size="38" font-weight="700" fill="#33bf67">+8</text>
+  <rect x="24" y="676" width="342" height="144" rx="24" fill="#fff" stroke="#d4e3ff"/>
+  <text x="46" y="726" font-family="Space Grotesk, sans-serif" font-size="26" fill="#161616">Trend</text>
+  <text x="46" y="768" font-family="Space Grotesk, sans-serif" font-size="38" font-weight="700" fill="#33bf67">Improving</text>
+</svg>

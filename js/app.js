@@ -7,12 +7,65 @@ document.addEventListener('DOMContentLoaded', function() {
     initApp();
 });
 
+const screenshotSlides = [
+    {
+        id: 'hero-overview',
+        title: 'Hero overview',
+        caption: 'Daily summary with today score, trend direction, and top readiness signals.',
+        image: 'assets/screenshots/screen-01-hero-overview.svg',
+        alt: 'ArchFit overview screen with daily score ring and key metrics.',
+        tag: 'Readiness',
+        points: ['Fast morning check-in', 'Daily readiness clarity', 'Habit-friendly summary']
+    },
+    {
+        id: 'expanded-scores',
+        title: 'Expanded day week month scores',
+        caption: 'Expanded score panel combines short and long-horizon context for better pacing decisions.',
+        image: 'assets/screenshots/screen-02-expanded-score.svg',
+        alt: 'Expanded score panel showing day, week, and month bars with values.',
+        tag: 'Scores',
+        points: ['Day week month context', 'Trend signal in one card', 'Simple coaching language']
+    },
+    {
+        id: 'score-trend',
+        title: 'Trend trajectory',
+        caption: 'Trend line tracks readiness movement so users can adapt before overreaching.',
+        image: 'assets/screenshots/screen-03-score-trend.svg',
+        alt: 'Score trend graph with streak badge and progress direction indicators.',
+        tag: 'Trend',
+        points: ['Trend over time', 'Streak visibility', 'Change vs baseline']
+    },
+    {
+        id: 'training-load-overview',
+        title: 'Training load overview',
+        caption: 'Detailed load page with ACWR status, weekly totals, and adaptation range signals.',
+        image: 'assets/screenshots/screen-06-training-load.png',
+        alt: 'Training load screen showing weekly total load, ACWR ratio, and status indicators.',
+        tag: 'Load',
+        points: ['Weekly load context', 'ACWR acute vs chronic view', 'Clear adaptation status']
+    },
+    {
+        id: 'profile-history',
+        title: 'Profile and history trends',
+        caption: 'Long-term profile view tracks body metrics and six-month training/recovery trends.',
+        image: 'assets/screenshots/screen-07-profile-history.png',
+        alt: 'Profile screen with body metrics controls and six-month training and recovery history charts.',
+        tag: 'History',
+        points: ['Body metrics updates', '6-month trend visibility', 'Training and recovery timelines']
+    }
+];
+
+let activeScreenshotIndex = 0;
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function initApp() {
     initDynamicDate();
     initDemoTabs();
     initReadinessDemo();
     initLoadDemo();
     initRecoveryDemo();
+    initDemoGallery();
+    initWaitlistForm();
     initPrinciples();
     initScrollAnimations();
     initNavigation();
@@ -70,6 +123,136 @@ function handleDemoPanelActivated(demoKey) {
     if (demoKey === 'load') {
         animateLoadChart();
     }
+}
+
+/* ========================================
+   Demo Gallery
+   ======================================== */
+
+function initDemoGallery() {
+    const image = document.getElementById('demoScreenshotImage');
+    const prev = document.getElementById('screenshotPrev');
+    const next = document.getElementById('screenshotNext');
+    const dots = document.getElementById('screenshotDots');
+    const carousel = document.getElementById('screenshotCarousel');
+    const rail = document.getElementById('screenshotRail');
+
+    if (!image || !prev || !next || !dots || !carousel || !rail || screenshotSlides.length === 0) {
+        return;
+    }
+
+    dots.innerHTML = screenshotSlides.map((slide, index) => (
+        `<button class="screenshot-dot${index === 0 ? ' active' : ''}" type="button" role="tab" aria-label="Show ${slide.title} screenshot" aria-selected="${index === 0 ? 'true' : 'false'}" data-slide-index="${index}"></button>`
+    )).join('');
+    rail.innerHTML = screenshotSlides.map((slide, index) => (
+        `<button class="screenshot-thumb${index === 0 ? ' active' : ''}" type="button" aria-label="Preview ${slide.title}" data-slide-index="${index}"><img src="${slide.image}" alt="" loading="lazy" width="64" height="110"></button>`
+    )).join('');
+
+    image.addEventListener('error', () => {
+        image.src = 'assets/screenshots/screen-fallback.svg';
+        image.alt = 'ArchFit app screenshot placeholder.';
+    });
+
+    const dotButtons = dots.querySelectorAll('.screenshot-dot');
+    const railButtons = rail.querySelectorAll('.screenshot-thumb');
+    dotButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const index = Number.parseInt(btn.dataset.slideIndex || '0', 10);
+            renderDemoGalleryItem(index);
+        });
+    });
+    railButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const index = Number.parseInt(btn.dataset.slideIndex || '0', 10);
+            renderDemoGalleryItem(index);
+        });
+    });
+
+    prev.addEventListener('click', () => {
+        renderDemoGalleryItem(activeScreenshotIndex - 1);
+    });
+
+    next.addEventListener('click', () => {
+        renderDemoGalleryItem(activeScreenshotIndex + 1);
+    });
+
+    carousel.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            renderDemoGalleryItem(activeScreenshotIndex - 1);
+        }
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            renderDemoGalleryItem(activeScreenshotIndex + 1);
+        }
+    });
+
+    let touchStartX = null;
+    carousel.addEventListener('touchstart', (event) => {
+        touchStartX = event.changedTouches[0]?.clientX ?? null;
+    }, { passive: true });
+
+    carousel.addEventListener('touchend', (event) => {
+        const touchEndX = event.changedTouches[0]?.clientX ?? null;
+        if (touchStartX === null || touchEndX === null) return;
+        const delta = touchEndX - touchStartX;
+        if (Math.abs(delta) < 40) return;
+        renderDemoGalleryItem(delta < 0 ? activeScreenshotIndex + 1 : activeScreenshotIndex - 1);
+    }, { passive: true });
+
+    renderDemoGalleryItem(0);
+}
+
+function renderDemoGalleryItem(index) {
+    const boundedIndex = ((index % screenshotSlides.length) + screenshotSlides.length) % screenshotSlides.length;
+    activeScreenshotIndex = boundedIndex;
+    const slide = screenshotSlides[boundedIndex];
+    const image = document.getElementById('demoScreenshotImage');
+    const dots = document.querySelectorAll('.screenshot-dot');
+    const railButtons = document.querySelectorAll('.screenshot-thumb');
+
+    if (!image || !slide || dots.length === 0) {
+        return;
+    }
+
+    image.src = slide.image;
+    image.alt = slide.alt;
+
+    dots.forEach((dot, dotIndex) => {
+        const selected = dotIndex === boundedIndex;
+        dot.classList.toggle('active', selected);
+        dot.setAttribute('aria-selected', selected ? 'true' : 'false');
+    });
+    railButtons.forEach((thumb, thumbIndex) => {
+        const selected = thumbIndex === boundedIndex;
+        thumb.classList.toggle('active', selected);
+        if (selected) {
+            thumb.scrollIntoView({
+                behavior: prefersReducedMotion ? 'auto' : 'smooth',
+                block: 'nearest',
+                inline: 'center'
+            });
+        }
+    });
+
+    updateDemoGalleryCaption(boundedIndex);
+}
+
+function updateDemoGalleryCaption(index) {
+    const slide = screenshotSlides[index];
+    const tag = document.getElementById('screenshotTag');
+    const title = document.getElementById('screenshotTitle');
+    const caption = document.getElementById('screenshotCaption');
+    const points = document.getElementById('screenshotPoints');
+
+    if (!slide || !tag || !title || !caption || !points) {
+        return;
+    }
+
+    tag.textContent = slide.tag;
+    title.textContent = slide.title;
+    caption.textContent = slide.caption;
+    points.innerHTML = slide.points.map((point) => `<li>${point}</li>`).join('');
 }
 
 /* ========================================
@@ -452,6 +635,45 @@ function initNavigation() {
     }, { threshold: 0.3 });
     
     sections.forEach(section => navObserver.observe(section));
+}
+
+/* ========================================
+   Waitlist Form (mailto fallback)
+   ======================================== */
+
+function initWaitlistForm() {
+    const form = document.getElementById('waitlistForm');
+    const emailInput = document.getElementById('waitlistEmail');
+    const goalInput = document.getElementById('waitlistGoal');
+
+    if (!form || !emailInput || !goalInput) {
+        return;
+    }
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const email = String(emailInput.value || '').trim();
+        const goal = String(goalInput.value || '').trim();
+
+        if (!email) {
+            emailInput.focus();
+            return;
+        }
+
+        const subject = encodeURIComponent('ArchFit Early Access Waitlist');
+        const lines = [
+            'Hi ArchFit team,',
+            '',
+            'I want to join the early access waitlist.',
+            `Email: ${email}`,
+            `Primary goal: ${goal || 'Not specified'}`,
+            '',
+            'Thanks.'
+        ];
+        const body = encodeURIComponent(lines.join('\n'));
+        window.location.href = `mailto:archiehojai99@gmail.com?subject=${subject}&body=${body}`;
+    });
 }
 
 /* ========================================

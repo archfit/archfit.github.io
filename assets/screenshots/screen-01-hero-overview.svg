@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" role="img" aria-label="ArchFit hero overview mock screenshot">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f9fcfb"/>
+      <stop offset="100%" stop-color="#eef6f3"/>
+    </linearGradient>
+  </defs>
+  <rect width="390" height="844" fill="url(#bg)" rx="36"/>
+  <text x="32" y="78" font-family="Space Grotesk, sans-serif" font-size="44" font-weight="700" fill="#12110f">Today</text>
+  <rect x="24" y="112" width="342" height="320" rx="24" fill="#ffffff" stroke="#dbe8e3"/>
+  <text x="46" y="160" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="700" fill="#101010">Essence</text>
+  <text x="46" y="194" font-family="Space Grotesk, sans-serif" font-size="20" fill="#7a7a7a">Last updated 24 sec ago</text>
+  <text x="46" y="242" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="600" fill="#9a9a9a">Day</text>
+  <rect x="46" y="256" width="286" height="12" rx="6" fill="#39d77a"/>
+  <text x="342" y="266" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="700" fill="#39d77a">81</text>
+  <text x="46" y="304" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="600" fill="#9a9a9a">Week</text>
+  <rect x="46" y="318" width="266" height="12" rx="6" fill="#2f9eff"/>
+  <text x="342" y="328" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="700" fill="#2f9eff">74</text>
+  <text x="46" y="366" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="600" fill="#9a9a9a">Month</text>
+  <rect x="46" y="380" width="266" height="12" rx="6" fill="#ff9f3d"/>
+  <text x="342" y="390" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="700" fill="#ff9f3d">74</text>
+  <rect x="24" y="454" width="342" height="180" rx="24" fill="#ffffff" stroke="#dbe8e3"/>
+  <text x="46" y="502" font-family="Space Grotesk, sans-serif" font-size="28" font-weight="700" fill="#101010">Score Trend</text>
+  <polyline points="46,578 116,578 186,550 256,526 326,522" fill="none" stroke="#2f9eff" stroke-width="6" stroke-linecap="round"/>
+  <rect x="24" y="662" width="342" height="132" rx="22" fill="#ffffff" stroke="#dbe8e3"/>
+  <text x="46" y="712" font-family="Space Grotesk, sans-serif" font-size="26" font-weight="700" fill="#0f766e">8.2h</text>
+  <text x="150" y="712" font-family="Space Grotesk, sans-serif" font-size="26" font-weight="700" fill="#0f766e">62ms</text>
+  <text x="258" y="712" font-family="Space Grotesk, sans-serif" font-size="26" font-weight="700" fill="#0f766e">60 bpm</text>
+  <text x="54" y="742" font-family="Space Grotesk, sans-serif" font-size="18" fill="#9a9a9a">Sleep</text>
+  <text x="164" y="742" font-family="Space Grotesk, sans-serif" font-size="18" fill="#9a9a9a">HRV</text>
+  <text x="280" y="742" font-family="Space Grotesk, sans-serif" font-size="18" fill="#9a9a9a">RHR</text>
+</svg>

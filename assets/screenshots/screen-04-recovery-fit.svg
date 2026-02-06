@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" role="img" aria-label="ArchFit recovery fit mock screenshot">
+  <rect width="390" height="844" rx="36" fill="#f4fbf6"/>
+  <text x="30" y="78" font-family="Space Grotesk, sans-serif" font-size="42" font-weight="700" fill="#141414">Session Fit</text>
+  <rect x="22" y="112" width="346" height="250" rx="24" fill="#fff" stroke="#cfe8d5"/>
+  <text x="42" y="160" font-family="Space Grotesk, sans-serif" font-size="26" fill="#1e4027">Recovery window</text>
+  <rect x="42" y="188" width="302" height="16" rx="8" fill="#dceee0"/>
+  <rect x="42" y="188" width="204" height="16" rx="8" fill="#46c06f"/>
+  <text x="42" y="236" font-family="Space Grotesk, sans-serif" font-size="20" fill="#4d6c56">Now</text>
+  <text x="176" y="236" font-family="Space Grotesk, sans-serif" font-size="20" fill="#4d6c56">Later</text>
+  <text x="304" y="236" font-family="Space Grotesk, sans-serif" font-size="20" fill="#4d6c56">Tomorrow</text>
+  <rect x="22" y="388" width="346" height="190" rx="24" fill="#fff" stroke="#cfe8d5"/>
+  <text x="42" y="436" font-family="Space Grotesk, sans-serif" font-size="26" font-weight="700" fill="#161616">Recommended intensity</text>
+  <rect x="42" y="458" width="132" height="46" rx="22" fill="#def6e6"/>
+  <text x="72" y="488" font-family="Space Grotesk, sans-serif" font-size="20" font-weight="700" fill="#17753a">Moderate</text>
+  <text x="42" y="534" font-family="Space Grotesk, sans-serif" font-size="20" fill="#5f665f">Warm-up well, keep form clean.</text>
+  <text x="42" y="566" font-family="Space Grotesk, sans-serif" font-size="20" fill="#5f665f">Scale down if stress rises.</text>
+  <rect x="22" y="604" width="346" height="214" rx="24" fill="#0f766e"/>
+  <text x="42" y="658" font-family="Space Grotesk, sans-serif" font-size="26" font-weight="700" fill="#fff">Recovery Tip</text>
+  <text x="42" y="700" font-family="Space Grotesk, sans-serif" font-size="21" fill="#d8f8f4">Hydrate, walk 10 mins, and</text>
+  <text x="42" y="730" font-family="Space Grotesk, sans-serif" font-size="21" fill="#d8f8f4">sleep on schedule tonight.</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" role="img" aria-label="ArchFit habit progress mock screenshot">
+  <rect width="390" height="844" rx="36" fill="#fff9f2"/>
+  <text x="28" y="78" font-family="Space Grotesk, sans-serif" font-size="42" font-weight="700" fill="#171513">Habit Progress</text>
+  <rect x="22" y="112" width="346" height="220" rx="24" fill="#fff" stroke="#e8dcc8"/>
+  <text x="42" y="158" font-family="Space Grotesk, sans-serif" font-size="26" font-weight="700" fill="#0f766e">6 day streak</text>
+  <text x="42" y="194" font-family="Space Grotesk, sans-serif" font-size="20" fill="#7e7468">Consistency this week</text>
+  <rect x="42" y="220" width="302" height="14" rx="7" fill="#f2e8da"/>
+  <rect x="42" y="220" width="242" height="14" rx="7" fill="#d97706"/>
+  <text x="42" y="268" font-family="Space Grotesk, sans-serif" font-size="19" fill="#836e56">4/5 weekly sessions done</text>
+  <rect x="22" y="356" width="346" height="234" rx="24" fill="#fff" stroke="#e8dcc8"/>
+  <text x="42" y="404" font-family="Space Grotesk, sans-serif" font-size="26" font-weight="700" fill="#131313">Weekly cadence</text>
+  <rect x="42" y="430" width="36" height="122" rx="10" fill="#e6f4ef"/>
+  <rect x="86" y="470" width="36" height="82" rx="10" fill="#e6f4ef"/>
+  <rect x="130" y="450" width="36" height="102" rx="10" fill="#e6f4ef"/>
+  <rect x="174" y="422" width="36" height="130" rx="10" fill="#0f766e"/>
+  <rect x="218" y="476" width="36" height="76" rx="10" fill="#e6f4ef"/>
+  <rect x="262" y="448" width="36" height="104" rx="10" fill="#e6f4ef"/>
+  <rect x="306" y="504" width="36" height="48" rx="10" fill="#e6f4ef"/>
+  <rect x="22" y="616" width="346" height="202" rx="24" fill="#fff" stroke="#e8dcc8"/>
+  <text x="42" y="666" font-family="Space Grotesk, sans-serif" font-size="25" font-weight="700" fill="#161616">Next action</text>
+  <text x="42" y="708" font-family="Space Grotesk, sans-serif" font-size="21" fill="#6b6258">Complete one 30-min session</text>
+  <text x="42" y="740" font-family="Space Grotesk, sans-serif" font-size="21" fill="#6b6258">and log recovery check-in.</text>
+</svg>
